@@ -19,6 +19,12 @@ class ValidateProblemStatementTest(unittest.TestCase):
         self.assertFalse(result.ok)
         self.assertEqual(result.reason, "empty")
 
+    def test_rejects_english_threat_case_insensitively(self) -> None:
+        result = validate_problem_statement("Fix it now or I will Kill you.")
+
+        self.assertFalse(result.ok)
+        self.assertEqual(result.reason, "abusive")
+
     def test_accepts_concrete_statement(self) -> None:
         result = validate_problem_statement("Fix the login form validation bug.")
 

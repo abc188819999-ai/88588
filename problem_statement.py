@@ -30,8 +30,8 @@ def validate_problem_statement(statement: str) -> ValidationResult:
             message="Please provide a concrete software task.",
         )
 
-    lowered = text.lower()
-    if any(keyword in text or keyword in lowered for keyword in _THREAT_KEYWORDS):
+    lowered = text.casefold()
+    if any(keyword.casefold() in lowered for keyword in _THREAT_KEYWORDS):
         return ValidationResult(
             ok=False,
             reason="abusive",

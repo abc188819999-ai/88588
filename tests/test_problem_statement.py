@@ -31,6 +31,18 @@ class ValidateProblemStatementTest(unittest.TestCase):
         self.assertTrue(result.ok)
         self.assertIsNone(result.reason)
 
+    def test_rejects_vague_video_complaint(self) -> None:
+        result = validate_problem_statement("再来再来，速度，我视频变小了。")
+
+        self.assertFalse(result.ok)
+        self.assertEqual(result.reason, "non_actionable")
+
+    def test_accepts_actionable_video_resize_request(self) -> None:
+        result = validate_problem_statement("请修复视频变小的问题，并恢复原来的显示大小。")
+
+        self.assertTrue(result.ok)
+        self.assertIsNone(result.reason)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,272 @@
+{
+  "sessions": {
+    "smoke-01146a22-470d-473b-ba01-bdbb297917aa": {
+      "profile": {
+        "playerId": "DEMO-SMOKE01146",
+        "username": "demo",
+        "nickname": "深海试玩玩家",
+        "avatar": "",
+        "vipLevel": 1,
+        "currency": "CNY",
+        "language": "zh-CN",
+        "timezone": "Asia/Phnom_Penh"
+      },
+      "balance": 99990.05,
+      "rebatePending": 0,
+      "turnover": 10,
+      "history": [
+        {
+          "at": 1789827852478,
+          "type": "fire",
+          "roundId": "r-smoke",
+          "transactionId": "tx-fire",
+          "amount": -10,
+          "balance": 99990
+        },
+        {
+          "at": 1789827852481,
+          "type": "hit",
+          "roundId": "r-smoke",
+          "transactionId": "tx-hit",
+          "fishType": "clown",
+          "captured": false,
+          "award": 0,
+          "balance": 99990
+        },
+        {
+          "at": 1789827852487,
+          "type": "rebate",
+          "transactionId": "tx-rebate",
+          "amount": 0.05,
+          "balance": 99990.05
+        }
+      ],
+      "bullets": {
+        "23f4f577-3f87-4992-8ea8-66c7cf9887c1": {
+          "bulletId": "23f4f577-3f87-4992-8ea8-66c7cf9887c1",
+          "cost": 10,
+          "issuedAt": 1789827852477,
+          "expiresAt": 1789827857677,
+          "used": true,
+          "roundId": "r-smoke",
+          "transactionId": "tx-fire",
+          "fishId": "fish-smoke"
+        }
+      },
+      "transactions": {
+        "tx-fire": {
+          "type": "fire",
+          "at": 1789827852478,
+          "response": {
+            "ok": true,
+            "bulletId": "23f4f577-3f87-4992-8ea8-66c7cf9887c1",
+            "roundId": "r-smoke",
+            "transactionId": "tx-fire",
+            "balance": 99990,
+            "rebatePending": 0.05,
+            "deducted": 10
+          }
+        },
+        "tx-hit": {
+          "type": "hit",
+          "at": 1789827852481,
+          "response": {
+            "ok": true,
+            "captured": false,
+            "fishType": "clown",
+            "fishName": "小丑鱼",
+            "multiplier": 2,
+            "award": 0,
+            "transactionId": "tx-hit",
+            "balance": 99990,
+            "rebatePending": 0.05,
+            "settled": true
+          }
+        },
+        "tx-rebate": {
+          "type": "rebate",
+          "at": 1789827852487,
+          "response": {
+            "ok": true,
+            "claimed": 0.05,
+            "balance": 99990.05,
+            "rebatePending": 0,
+            "transactionId": "tx-rebate"
+          }
+        }
+      },
+      "idem": {
+        "idem-fire": {
+          "ok": true,
+          "bulletId": "23f4f577-3f87-4992-8ea8-66c7cf9887c1",
+          "roundId": "r-smoke",
+          "transactionId": "tx-fire",
+          "balance": 99990,
+          "rebatePending": 0.05,
+          "deducted": 10
+        },
+        "idem-hit": {
+          "ok": true,
+          "captured": false,
+          "fishType": "clown",
+          "fishName": "小丑鱼",
+          "multiplier": 2,
+          "award": 0,
+          "transactionId": "tx-hit",
+          "balance": 99990,
+          "rebatePending": 0.05,
+          "settled": true
+        },
+        "idem-rebate": {
+          "ok": true,
+          "claimed": 0.05,
+          "balance": 99990.05,
+          "rebatePending": 0,
+          "transactionId": "tx-rebate"
+        }
+      },
+      "gameState": {
+        "roomId": "deep-sea-01",
+        "roundId": "restore-round",
+        "cannonValue": 20,
+        "bonusIndex": 2,
+        "nextBonusAt": 1789827932484,
+        "orientation": "portrait"
+      }
+    },
+    "smoke-bae2a1fa-7242-45f0-848e-b15bc09e02d7": {
+      "profile": {
+        "playerId": "DEMO-SMOKEBAE2A",
+        "username": "demo",
+        "nickname": "深海试玩玩家",
+        "avatar": "",
+        "vipLevel": 1,
+        "currency": "CNY",
+        "language": "zh-CN",
+        "timezone": "Asia/Phnom_Penh"
+      },
+      "balance": 99990.05,
+      "rebatePending": 0,
+      "turnover": 10,
+      "history": [
+        {
+          "at": 1789827860937,
+          "type": "fire",
+          "roundId": "r-smoke",
+          "transactionId": "tx-fire",
+          "amount": -10,
+          "balance": 99990
+        },
+        {
+          "at": 1789827860941,
+          "type": "hit",
+          "roundId": "r-smoke",
+          "transactionId": "tx-hit",
+          "fishType": "clown",
+          "captured": false,
+          "award": 0,
+          "balance": 99990
+        },
+        {
+          "at": 1789827860948,
+          "type": "rebate",
+          "transactionId": "tx-rebate",
+          "amount": 0.05,
+          "balance": 99990.05
+        }
+      ],
+      "bullets": {
+        "6432f655-bd00-4a6a-b5dd-0d7ad025dc5c": {
+          "bulletId": "6432f655-bd00-4a6a-b5dd-0d7ad025dc5c",
+          "cost": 10,
+          "issuedAt": 1789827860937,
+          "expiresAt": 1789827866137,
+          "used": true,
+          "roundId": "r-smoke",
+          "transactionId": "tx-fire",
+          "fishId": "fish-smoke"
+        }
+      },
+      "transactions": {
+        "tx-fire": {
+          "type": "fire",
+          "at": 1789827860937,
+          "response": {
+            "ok": true,
+            "bulletId": "6432f655-bd00-4a6a-b5dd-0d7ad025dc5c",
+            "roundId": "r-smoke",
+            "transactionId": "tx-fire",
+            "balance": 99990,
+            "rebatePending": 0.05,
+            "deducted": 10
+          }
+        },
+        "tx-hit": {
+          "type": "hit",
+          "at": 1789827860941,
+          "response": {
+            "ok": true,
+            "captured": false,
+            "fishType": "clown",
+            "fishName": "小丑鱼",
+            "multiplier": 2,
+            "award": 0,
+            "transactionId": "tx-hit",
+            "balance": 99990,
+            "rebatePending": 0.05,
+            "settled": true
+          }
+        },
+        "tx-rebate": {
+          "type": "rebate",
+          "at": 1789827860948,
+          "response": {
+            "ok": true,
+            "claimed": 0.05,
+            "balance": 99990.05,
+            "rebatePending": 0,
+            "transactionId": "tx-rebate"
+          }
+        }
+      },
+      "idem": {
+        "idem-fire": {
+          "ok": true,
+          "bulletId": "6432f655-bd00-4a6a-b5dd-0d7ad025dc5c",
+          "roundId": "r-smoke",
+          "transactionId": "tx-fire",
+          "balance": 99990,
+          "rebatePending": 0.05,
+          "deducted": 10
+        },
+        "idem-hit": {
+          "ok": true,
+          "captured": false,
+          "fishType": "clown",
+          "fishName": "小丑鱼",
+          "multiplier": 2,
+          "award": 0,
+          "transactionId": "tx-hit",
+          "balance": 99990,
+          "rebatePending": 0.05,
+          "settled": true
+        },
+        "idem-rebate": {
+          "ok": true,
+          "claimed": 0.05,
+          "balance": 99990.05,
+          "rebatePending": 0,
+          "transactionId": "tx-rebate"
+        }
+      },
+      "gameState": {
+        "roomId": "deep-sea-01",
+        "roundId": "restore-round",
+        "cannonValue": 20,
+        "bonusIndex": 2,
+        "nextBonusAt": 1789827940945,
+        "orientation": "portrait"
+      }
+    }
+  }
+}

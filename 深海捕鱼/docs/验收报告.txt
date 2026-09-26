@@ -1,0 +1,30 @@
+《深海捕鱼》验收报告
+版本：1.0.0
+
+已执行并通过：
+[通过] 根目录 index.html 存在，入口明确。
+[通过] 游戏名称=深海捕鱼，hallId=fishing-hall，hallName=捕鱼厅。
+[通过] 横屏和竖屏 CSS 独立响应式排版已实现。
+[通过] 12种鱼素材、背景、原始游戏卡片均随包交付。
+[通过] 点击发炮、按住连发、自动、锁定、加减炮值逻辑已实现。
+[通过] 横向鱼潮、环形鱼潮、黄金鲨王三类红利事件已实现。
+[通过] DEMO 余额、发炮扣款、命中、返奖、返水、历史由 Node 服务端处理。
+[通过] npm run smoke：发炮幂等测试，相同 idempotencyKey 重放返回相同 bulletId，余额只扣一次。
+[通过] npm run smoke：命中幂等、transactionId /api/settlement 恢复、状态保存恢复、返水幂等均通过。
+[通过] PRODUCTION 不配置接口时 fail closed，不会自动退回 DEMO 资金逻辑。
+[通过] BGM/SFX 独立开关；后台暂停、前台恢复逻辑已实现。
+[通过] requestAnimationFrame + delta time；未使用 setInterval 锁定30/40/50/60FPS。
+[通过] 代码语法检查：demo-server.mjs / core/main.js / core/game.js / api/platform-bridge.js。
+
+需要平台/真机联调后才能最终打勾：
+[待平台联调] 正式登录鉴权与 authToken。
+[待平台联调] 正式钱包余额、正式投注、正式返奖、正式返水。
+[待平台联调] 正式捕鱼命中率/RTP/风控配置。
+[待平台联调] 正式历史记录、生产实时 WebSocket/SSE。
+[待真机] iPhone/Android Safe Area、全屏/横竖屏切换手感。
+[待真机] 120Hz 设备普通场景平均 >=110FPS 的实机性能指标。
+[待真机] iOS 静音键/浏览器音频策略下的最终音频行为。
+
+结论：本地 DEMO 功能链和资金幂等链可验收；PRODUCTION 资金链必须接 YY9 正式后端后再做最终上线验收，当前文档没有把未联调的正式接口标记为“已通过”。
+
+[环境限制] 已尝试在当前容器调用 headless Chromium 做自动横/竖屏截图，但 Chromium 进程在该容器环境中超时，未把该项冒充为通过；横/竖屏最终视觉与真机帧率仍列为真机验收项。

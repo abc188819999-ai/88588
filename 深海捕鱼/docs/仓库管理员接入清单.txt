@@ -1,0 +1,35 @@
+gameId: yy9-deep-sea-fishing
+gameName: 深海捕鱼
+hallId: fishing-hall
+hallName: 捕鱼厅
+entryUrl: ./index.html
+orientation: responsive（portrait + landscape）
+version: 1.0.0
+
+玩家接口: getProfile()
+余额接口: getBalance() / refreshBalance()
+下注接口: fire() / placeBet()
+结果接口: hitFish() / fishResult() / getResult()
+结算接口: settle()
+返水接口: getRebate() / claimRebate()
+历史接口: getHistory()
+客服接口: openSupport()
+返回接口: returnHall()，所属厅为捕鱼厅
+实时接口: DEMO=EventSource /api/events；PRODUCTION=WebSocket/SSE 由平台配置
+特殊接口: enterFishRoom / lockTarget / changeCannon / bossEvent
+
+运行主文件: index.html（压缩包根目录）
+本地服务: demo-server.mjs
+配置文件: config/game-config.js
+素材目录: assets/
+音频目录: audio/
+平台桥接: api/platform-bridge.js
+实时层: realtime/client.js
+状态机: core/state-machine.js
+主游戏: core/game.js
+
+注意事项:
+1. 正式上架必须把 mode 切为 PRODUCTION 并注入正式 endpoints。
+2. 正式 API 未联调前不能把 DEMO 余额当真实钱包。
+3. 卡片文件：assets/游戏卡片.png，保持用户提供原文件。
+4. 返回动作必须由平台 actions.returnHall 或 returnUrl 指向捕鱼厅，不要硬编码主大厅。

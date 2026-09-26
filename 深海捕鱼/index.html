@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#03182a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>深海捕鱼</title>
+  <link rel="preload" href="./assets/深海背景.webp" as="image">
+  <link rel="stylesheet" href="./ui/styles.css">
+</head>
+<body>
+  <main id="app" aria-label="深海捕鱼游戏">
+    <canvas id="gameCanvas" aria-label="捕鱼游戏区域"></canvas>
+
+    <section id="lobby" class="lobby-overlay" aria-label="横屏游戏大厅">
+      <div class="lobby-shell">
+        <div class="lobby-hero glass">
+          <div class="lobby-copy">
+            <span class="lobby-kicker">横屏全屏综合大厅</span>
+            <h1>YY9 横屏游戏大厅</h1>
+            <p>参考图与视频已整理成一个横屏入口大厅，覆盖捕鱼、棋牌、老虎机、百家乐、龙虎斗、飞禽走兽等常见分类。</p>
+            <div class="lobby-tags">
+              <span>全屏横版</span>
+              <span>多游戏入口</span>
+              <span>大厅式布局</span>
+            </div>
+          </div>
+          <div class="lobby-feature-card">
+            <img src="./assets/游戏卡片.png" alt="深海捕鱼封面">
+            <div>
+              <strong>当前可试玩：深海捕鱼</strong>
+              <p>先接入现成可运行的捕鱼演示，其他大厅入口已就位。</p>
+              <button id="btnEnterFishing" class="hero-button" type="button">进入捕鱼</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lobby-grid">
+          <button class="lobby-card glass" type="button" data-game="fishing">
+            <span class="lobby-card-badge">HOT</span>
+            <strong>深海捕鱼</strong>
+            <p>海底场景、鱼潮、Boss、火力切换</p>
+            <span class="lobby-card-action">立即进入</span>
+          </button>
+          <button class="lobby-card glass" type="button" data-game="chess">
+            <strong>棋牌游戏</strong>
+            <p>横屏牌桌入口，支持独立分区展示</p>
+            <span class="lobby-card-action pending">即将开放</span>
+          </button>
+          <button class="lobby-card glass" type="button" data-game="slots">
+            <strong>老虎机专区</strong>
+            <p>连环夺宝、宝石派对、糖果派对</p>
+            <span class="lobby-card-action pending">即将开放</span>
+          </button>
+          <button class="lobby-card glass" type="button" data-game="baccarat">
+            <strong>百家乐</strong>
+            <p>经典百家乐横屏桌面入口</p>
+            <span class="lobby-card-action pending">即将开放</span>
+          </button>
+          <button class="lobby-card glass" type="button" data-game="dragon-tiger">
+            <strong>龙虎斗</strong>
+            <p>快速下注区与横版状态栏预留</p>
+            <span class="lobby-card-action pending">即将开放</span>
+          </button>
+          <button class="lobby-card glass" type="button" data-game="animals">
+            <strong>飞禽走兽 / 鱼虾蟹</strong>
+            <p>动物转盘与经典玩法分类入口</p>
+            <span class="lobby-card-action pending">即将开放</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="topHud" class="hud top-hud">
+      <div class="player-card glass">
+        <div id="avatar" class="avatar">鱼</div>
+        <div class="player-lines">
+          <div><strong id="nickname">试玩玩家</strong><span id="vip" class="vip">VIP0</span></div>
+          <div id="playerId" class="muted">ID --</div>
+        </div>
+      </div>
+      <div id="eventBanner" class="event-banner" aria-live="polite">深海平静</div>
+      <div class="top-actions">
+        <button id="btnBack" class="round-button" type="button" aria-label="返回捕鱼厅">返回</button>
+        <button id="btnSupport" class="round-button" type="button" aria-label="客服">客服</button>
+        <button id="btnHelp" class="round-button" type="button" aria-label="游戏说明">说明</button>
+      </div>
+    </section>
+
+    <section id="statusHud" class="status-hud glass">
+      <div class="stat"><span>余额</span><strong id="balance">0.00</strong></div>
+      <button id="btnRebate" class="stat interactive" type="button"><span>返水</span><strong id="rebate">0.00</strong></button>
+      <div class="stat"><span>炮值</span><strong id="cannonValue">10</strong></div>
+      <div class="stat compact"><span>帧率</span><strong id="fps">--</strong></div>
+    </section>
+
+    <section id="controlHud" class="control-hud glass">
+      <button id="btnCannonDown" class="control-button" type="button" aria-label="降低炮值">－</button>
+      <button id="btnLock" class="control-button" type="button" aria-pressed="false">锁定</button>
+      <div class="cannon-label"><span>火力</span><strong id="cannonValueBottom">10</strong></div>
+      <button id="btnAuto" class="control-button" type="button" aria-pressed="false">自动</button>
+      <button id="btnCannonUp" class="control-button" type="button" aria-label="提高炮值">＋</button>
+    </section>
+
+    <section id="audioHud" class="audio-hud glass">
+      <button id="btnBgm" type="button" aria-pressed="true">音乐开</button>
+      <button id="btnSfx" type="button" aria-pressed="true">音效开</button>
+    </section>
+
+    <div id="loading" class="overlay loading-overlay">
+      <div class="loading-card">
+        <img src="./assets/游戏卡片.png" alt="深海捕鱼" class="loading-cover">
+        <h1>深海捕鱼</h1>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <p id="progressText">正在加载 0%</p>
+      </div>
+    </div>
+
+    <div id="errorOverlay" class="overlay hidden">
+      <div class="dialog error-dialog">
+        <h2>连接异常</h2>
+        <p id="errorMessage">正在尝试恢复连接</p>
+        <button id="btnRetry" type="button">重新连接</button>
+      </div>
+    </div>
+
+    <div id="helpModal" class="overlay hidden" role="dialog" aria-modal="true" aria-label="游戏说明">
+      <div class="dialog help-dialog">
+        <div class="dialog-title"><h2>深海捕鱼说明</h2><button id="btnHelpClose" type="button">关闭</button></div>
+        <p>点击或按住海面发炮。每发炮弹消耗当前炮值；命中后是否捕获、返奖金额均以服务端结果为准。开启“锁定”后点击目标即可持续瞄准；“自动”会按当前方向持续发炮。</p>
+        <div id="fishGuide" class="fish-guide"></div>
+        <p class="help-note">鱼潮会按左右穿场、环形鱼阵、黄金鲨王循环出现。试玩数据与正式数据完全隔离。</p>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <div id="modeBadge" class="mode-badge">DEMO</div>
+  </main>
+  <script type="module" src="./core/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+audioId | 文件 | 用途 | 触发 | 默认音量 | 循环 | 优先级
+bgm | audio/深海背景音乐.wav | 背景音乐 | 游戏加载完成/恢复前台 | 0.42资源增益 × BGM主音量 | 是 | 低
+fire | audio/发炮.wav | 发炮 | 每发炮弹 | 0.34 | 否 | 中
+hit | audio/命中.wav | 命中 | 炮弹碰鱼 | 0.26 | 否 | 中
+catch | audio/捕获.wav | 捕获成功 | captured=true | 0.38 | 否 | 高
+tide | audio/鱼潮.wav | 鱼潮提示 | 鱼潮开始 | 0.48 | 否 | 高
+boss | audio/鲨王来袭.wav | BOSS提示 | 鲨王入场 | 0.54 | 否 | 高
+button | audio/按钮.wav | UI按钮 | 切炮/切换 | 0.28 | 否 | 低
+alert | audio/警告.wav | 余额/异常警告 | 阻止操作 | 0.35 | 否 | 高
+coin | audio/金币.wav | 返奖反馈 | 捕获/返水到账 | 0.34 | 否 | 中
+
+BGM 与 SFX 分开开关、分开主音量。切后台暂停 AudioContext；返回前台只恢复一套 BGM。

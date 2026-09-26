@@ -1,0 +1,19 @@
+{
+  "gameId": "yy9-deep-sea-fishing",
+  "gameName": "深海捕鱼",
+  "gameType": "fishing",
+  "hallId": "fishing-hall",
+  "hallName": "捕鱼厅",
+  "version": "1.0.0",
+  "entryUrl": "./index.html",
+  "orientation": "responsive",
+  "layouts": ["portrait", "landscape"],
+  "status": "ready",
+  "modeDefault": "DEMO",
+  "productionFallbackToDemo": false,
+  "cover": "./assets/游戏卡片.png",
+  "run": "npm start",
+  "localUrl": "http://127.0.0.1:4173/",
+  "apiBridge": "./api/platform-bridge.js",
+  "realtime": "SSE in DEMO; WebSocket/SSE configurable in PRODUCTION"
+}

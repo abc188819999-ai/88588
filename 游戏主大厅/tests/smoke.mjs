@@ -12,7 +12,7 @@ async function j(path,opt={}){const r=await fetch(base+path,opt);const data=awai
 const post=(path,data)=>j(path,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});
 try{
   await wait();
-  const page=await fetch(base+'/'); if(!page.ok||(await page.text()).includes('<title>深海捕鱼</title>')===false)throw new Error('首页静态资源失败');
+  const page=await fetch(base+'/'); if(!page.ok||(await page.text()).includes('<title>横屏游戏主大厅</title>')===false)throw new Error('首页静态资源失败');
   await post('/api/initialize',{sessionId:sid});
   const b0=await j(`/api/balance?sessionId=${sid}`);if(b0.balance!==100000)throw new Error('初始余额错误');
   const firePayload={sessionId:sid,cannonValue:10,roundId:'r-smoke',transactionId:'tx-fire',requestId:'rq-fire',idempotencyKey:'idem-fire'};

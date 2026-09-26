@@ -16,60 +16,83 @@
 
     <section id="lobby" class="lobby-overlay" aria-label="横屏游戏大厅">
       <div class="lobby-shell">
+        <section class="lobby-topbar glass">
+          <div class="lobby-brand">
+            <span class="lobby-brand-mark">YY9</span>
+            <div>
+              <strong>横屏综合游戏大厅</strong>
+              <p>手动左右滑动查看，不做自动大厅轮播</p>
+            </div>
+          </div>
+          <div class="lobby-marquee">
+            <span class="marquee-label">跑马灯</span>
+            <div class="marquee-window">
+              <div id="marqueeTrack" class="marquee-track"></div>
+            </div>
+          </div>
+          <div class="lobby-overview">
+            <div class="overview-pill">
+              <span>大厅在线</span>
+              <strong id="lobbyTotalOnline">8,888</strong>
+            </div>
+            <div class="overview-pill">
+              <span>综合奖池</span>
+              <strong id="lobbyTotalJackpot">¥ 9,888,888</strong>
+            </div>
+          </div>
+        </section>
+
         <div class="lobby-hero glass">
           <div class="lobby-copy">
             <span class="lobby-kicker">横屏全屏综合大厅</span>
             <h1>YY9 横屏游戏大厅</h1>
-            <p>参考图与视频已整理成一个横屏入口大厅，覆盖捕鱼、棋牌、老虎机、百家乐、龙虎斗、飞禽走兽等常见分类。</p>
+            <p>参考图与视频已整理成一个横屏入口大厅，补上动态推荐位、奖池滚动、在线人数浮动、两层卡片和手动滑动分区。</p>
             <div class="lobby-tags">
               <span>全屏横版</span>
-              <span>多游戏入口</span>
-              <span>大厅式布局</span>
+              <span>手动滑动</span>
+              <span>两层卡片</span>
+              <span>动态推荐</span>
+            </div>
+            <div class="lobby-actions">
+              <button id="btnEnterFishing" class="hero-button" type="button">进入捕鱼</button>
+              <span class="swipe-hint">按住卡片区域左右拖动 / 手机上直接手滑</span>
             </div>
           </div>
-          <div class="lobby-feature-card">
-            <img src="./assets/游戏卡片.png" alt="深海捕鱼封面">
-            <div>
-              <strong>当前可试玩：深海捕鱼</strong>
-              <p>先接入现成可运行的捕鱼演示，其他大厅入口已就位。</p>
-              <button id="btnEnterFishing" class="hero-button" type="button">进入捕鱼</button>
+          <div id="lobbyRecommendation" class="lobby-feature-card" data-game="fishing">
+            <div class="recommendation-screen">
+              <span id="recommendationBadge" class="recommendation-badge">本场热推</span>
+              <strong id="recommendationTitle">深海捕鱼</strong>
+              <p id="recommendationScene">黄金鲨王 · 高爆场景</p>
+            </div>
+            <div class="recommendation-meta">
+              <div>
+                <span>当前在线</span>
+                <strong id="recommendationOnline">6,888</strong>
+              </div>
+              <div>
+                <span>奖池滚动</span>
+                <strong id="recommendationJackpot">¥ 388,888</strong>
+              </div>
+              <div>
+                <span>状态</span>
+                <strong id="recommendationStatus">可试玩</strong>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="lobby-grid">
-          <button class="lobby-card glass" type="button" data-game="fishing">
-            <span class="lobby-card-badge">HOT</span>
-            <strong>深海捕鱼</strong>
-            <p>海底场景、鱼潮、Boss、火力切换</p>
-            <span class="lobby-card-action">立即进入</span>
-          </button>
-          <button class="lobby-card glass" type="button" data-game="chess">
-            <strong>棋牌游戏</strong>
-            <p>横屏牌桌入口，支持独立分区展示</p>
-            <span class="lobby-card-action pending">即将开放</span>
-          </button>
-          <button class="lobby-card glass" type="button" data-game="slots">
-            <strong>老虎机专区</strong>
-            <p>连环夺宝、宝石派对、糖果派对</p>
-            <span class="lobby-card-action pending">即将开放</span>
-          </button>
-          <button class="lobby-card glass" type="button" data-game="baccarat">
-            <strong>百家乐</strong>
-            <p>经典百家乐横屏桌面入口</p>
-            <span class="lobby-card-action pending">即将开放</span>
-          </button>
-          <button class="lobby-card glass" type="button" data-game="dragon-tiger">
-            <strong>龙虎斗</strong>
-            <p>快速下注区与横版状态栏预留</p>
-            <span class="lobby-card-action pending">即将开放</span>
-          </button>
-          <button class="lobby-card glass" type="button" data-game="animals">
-            <strong>飞禽走兽 / 鱼虾蟹</strong>
-            <p>动物转盘与经典玩法分类入口</p>
-            <span class="lobby-card-action pending">即将开放</span>
-          </button>
-        </div>
+        <section class="lobby-section glass">
+          <div class="lobby-section-head">
+            <div>
+              <span class="section-kicker">一类卡片</span>
+              <h2>热门主分类</h2>
+            </div>
+            <p>这里不自动轮播，只保留手动左右滑动切换</p>
+          </div>
+          <div id="featuredRail" class="lobby-scroll featured-rail" aria-label="热门主分类滑动区"></div>
+        </section>
+
+        <div id="lobbySections" class="lobby-sections"></div>
       </div>
     </section>
 

@@ -1,0 +1,22 @@
+《DEMO / PRODUCTION 隔离说明》
+
+DEMO
+- 默认模式。
+- 运行 npm start 后，由 demo-server.mjs 提供权威试玩余额、发炮扣款、捕获判定、返奖、返水、历史、结算查询。
+- 默认试玩余额 100000。
+- 数据保存在 .data/demo-state.json。
+- DEMO 概率、余额、返水均为开发验收用途，不代表正式运营参数。
+
+PRODUCTION
+- 启动前设置 window.YY9_GAME_MODE='PRODUCTION'。
+- 必须注入 window.YY9_PLATFORM_CONFIG.endpoints。
+- initializeGame 返回 productionReady=true 后游戏才进入正式玩法状态。
+- 若关键接口没有映射，平台桥接层直接报错。
+- 正式接口失败时不会自动调用 DEMO 结果，不会使用浏览器本地随机结果，不会在前端自行结算真钱余额。
+
+隔离检查
+1. DEMO 路由固定在同源 /api/*。
+2. PRODUCTION 路由完全由平台注入。
+3. 模式标记在页面右侧显示 DEMO / PRODUCTION。
+4. localStorage 只保存非资金设置和本地 session/device 标识；正式余额不保存在 localStorage。
+5. 资金结果只通过 API 响应更新界面。

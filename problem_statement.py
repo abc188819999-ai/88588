@@ -9,6 +9,24 @@ _NON_ACTIONABLE_PATTERNS = (
     "我叫你做什么你做什么",
     "反正都是代码",
 )
+_ACTIONABLE_HINTS = (
+    "fix",
+    "change",
+    "update",
+    "adjust",
+    "resize",
+    "restore",
+    "修复",
+    "修改",
+    "调整",
+    "恢复",
+    "放大",
+)
+_COMPLAINT_ONLY_PATTERNS = (
+    "视频变小了",
+    "video became smaller",
+    "video is smaller",
+)
 
 
 @dataclass(frozen=True)
@@ -39,6 +57,15 @@ def validate_problem_statement(statement: str) -> ValidationResult:
         )
 
     if any(pattern in text for pattern in _NON_ACTIONABLE_PATTERNS):
+        return ValidationResult(
+            ok=False,
+            reason="non_actionable",
+            message="Please describe one concrete, scoped coding change.",
+        )
+
+    if any(pattern in lowered for pattern in _COMPLAINT_ONLY_PATTERNS) and not any(
+        hint in lowered for hint in _ACTIONABLE_HINTS
+    ):
         return ValidationResult(
             ok=False,
             reason="non_actionable",

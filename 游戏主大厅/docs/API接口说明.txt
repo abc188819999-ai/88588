@@ -1,0 +1,140 @@
+《深海捕鱼》API接口说明
+
+一、统一平台桥接文件
+api/platform-bridge.js
+类：PlatformBridge
+正式环境通过 window.YY9_PLATFORM_CONFIG 注入 apiBase、authToken、sessionId、deviceId、endpoints、actions、realtimeUrl。
+
+二、统一玩家字段
+playerId / username / nickname / avatar / vipLevel / balance / currency / language / timezone / sessionId / authToken / deviceId
+全部动态读取，游戏代码未写死正式玩家数据。
+
+三、统一接口方法
+initializeGame()
+getProfile()
+getBalance()
+refreshBalance()
+getGameConfig()
+getGameState()
+restoreGameState()
+saveGameState(state)
+placeBet(data)
+cancelBet(data)
+getResult(data)
+settle(data)
+collect(data)
+getHistory(limit)
+openSupport()
+openWallet()
+openDeposit()
+openWithdraw()
+exitGame()
+returnHall()
+loadSettings()
+saveSettings(settings)
+
+捕鱼扩展：
+enterFishRoom(data)
+fire(data)
+lockTarget(data)
+changeCannon(data)
+hitFish(data)
+fishResult(data)
+bossEvent(data)
+getRebate()
+claimRebate()
+
+四、DEMO 路由
+POST /api/initialize
+GET  /api/profile
+GET  /api/balance
+GET  /api/config
+GET  /api/state
+POST /api/state/save
+POST /api/fishing/fire
+POST /api/fishing/hit
+POST /api/cancel-bet
+GET  /api/settlement
+POST /api/collect
+GET  /api/history
+GET  /api/rebate
+POST /api/rebate/claim
+POST /api/boss-event
+GET  /api/events  (SSE)
+GET  /api/health
+
+五、资金关键字段
+每次发炮、命中、返水领取请求由桥接层预留：
+requestId
+transactionId
+operationId
+idempotencyKey
+gameId
+roundId
+sessionId
+deviceId
+
+发炮：
+cannonValue
+roundId
+aimX
+aimY
+
+命中：
+bulletId
+fishId
+fishType
+roundId
+clientHitAt
+
+六、幂等与重复请求
+DEMO 服务端以 idempotencyKey 保存已执行响应。同一个发炮 idempotencyKey 重复提交时返回同一个 bulletId 与同一余额，不重复扣款。同一命中 idempotencyKey 重复提交不重复派奖。
+
+七、响应丢失恢复
+发炮或命中请求若客户端未收到响应，会用 transactionId 调用 settle()/GET /api/settlement 查询服务端是否已经处理：
+- found=true：采用服务端原响应恢复界面。
+- found=false：不得在前端假造资金结果；平台可按同一 idempotencyKey 安全重试。
+
+八、PRODUCTION 映射示例
+在游戏脚本加载前注入：
+
+window.YY9_GAME_MODE = 'PRODUCTION';
+window.YY9_PLATFORM_CONFIG = {
+  apiBase: 'https://你的正式API域名',
+  authToken: '由平台会话动态注入，不可写死',
+  sessionId: '平台会话ID',
+  deviceId: '平台设备ID',
+  returnUrl: '/game-halls/fishing-hall.html',
+  endpoints: {
+    initializeGame: { method:'POST', url:'/game/init' },
+    getProfile: { method:'GET', url:'/player/profile' },
+    getBalance: { method:'GET', url:'/wallet/balance' },
+    refreshBalance: { method:'GET', url:'/wallet/balance' },
+    getGameConfig: { method:'GET', url:'/games/deep-sea/config' },
+    getGameState: { method:'GET', url:'/games/deep-sea/state' },
+    restoreGameState: { method:'GET', url:'/games/deep-sea/state' },
+    saveGameState: { method:'POST', url:'/games/deep-sea/state' },
+    fire: { method:'POST', url:'/games/deep-sea/fire' },
+    placeBet: { method:'POST', url:'/games/deep-sea/fire' },
+    hitFish: { method:'POST', url:'/games/deep-sea/hit' },
+    fishResult: { method:'POST', url:'/games/deep-sea/hit' },
+    getResult: { method:'POST', url:'/games/deep-sea/hit' },
+    settle: { method:'GET', url:'/wallet/transaction' },
+    getHistory: { method:'GET', url:'/games/deep-sea/history' },
+    getRebate: { method:'GET', url:'/rebate/pending' },
+    claimRebate: { method:'POST', url:'/rebate/claim' },
+    bossEvent: { method:'POST', url:'/games/deep-sea/boss-event' }
+  },
+  actions: {
+    openSupport(ctx) { /* 平台统一客服 */ },
+    returnHall(ctx) { /* 返回捕鱼厅 */ }
+  },
+  realtimeType: 'ws',
+  realtimeUrl: 'wss://你的正式实时服务'
+};
+
+九、正式环境硬性要求
+- PRODUCTION 不允许接口失败后切到 DEMO。
+- 正式余额、扣款、捕获、返奖、返水、历史、RTP/命中率由平台后端权威控制。
+- authToken 不得打包进静态游戏文件。
+- 服务器必须自行验证 cannonValue、bulletId、fishType、sessionId、roundId、幂等键和交易状态。

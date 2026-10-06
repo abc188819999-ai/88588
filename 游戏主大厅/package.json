@@ -1,0 +1,14 @@
+{
+  "name": "yy9-deep-sea-fishing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node demo-server.mjs",
+    "check": "node --check demo-server.mjs && node --check core/main.js && node --check core/game.js && node --check api/platform-bridge.js",
+    "smoke": "node tests/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,17 @@
+《按钮与点击热区》
+所有 DOM 按钮视觉区与点击区当前一致；移动端 CSS 保证核心按钮高度约 38~50px。按钮之间保留间距，热区不互相覆盖。
+
+buttonId | buttonName | purpose | visualRect/hitRect | defaultState | pressedState | disabled/loading | eventName | apiBinding | canRepeat | debounce/cooldown
+btnBack | 返回 | 返回捕鱼厅 | DOM按钮自身边界 | 蓝色 | 按压缩放 | 无 | click:returnHall | returnHall() | 否 | 单击
+btnSupport | 客服 | 打开统一客服 | DOM按钮自身边界 | 蓝色 | 按压缩放 | 无 | click:openSupport | openSupport() | 否 | 单击
+btnHelp | 说明 | 打开规则/倍率 | DOM按钮自身边界 | 蓝色 | 按压缩放 | 无 | click:help | 本地UI | 否 | 单击
+btnCannonDown | 减炮 | 上一档炮值 | DOM按钮自身边界 | 蓝色 | 按压缩放 | 无 | click:cannonDown | changeCannon() | 可 | 每次点击一档
+btnCannonUp | 加炮 | 下一档炮值 | DOM按钮自身边界 | 蓝色 | 按压缩放 | 无 | click:cannonUp | changeCannon() | 可 | 每次点击一档
+btnLock | 锁定 | 目标锁定开关 | DOM按钮自身边界 | 蓝色 | 金色激活 | 无 | click:lock | lockTarget() | 是 | 开关
+btnAuto | 自动 | 自动发炮开关 | DOM按钮自身边界 | 蓝色 | 金色激活 | 余额不足自动关闭 | click:auto | fire() | 是 | 发炮冷却145ms
+btnBgm | 音乐 | BGM开关 | DOM按钮自身边界 | 蓝色 | 半透明关闭 | 无 | click:bgm | saveSettings() | 是 | 开关
+btnSfx | 音效 | SFX开关 | DOM按钮自身边界 | 蓝色 | 半透明关闭 | 无 | click:sfx | saveSettings() | 是 | 开关
+btnRebate | 返水 | 领取待返水 | 状态块自身边界 | 透明状态块 | 按压 | 请求中由接口约束 | click:rebate | claimRebate() | 否 | 由幂等键保护
+canvasPointer | 海面发炮 | 瞄准/发炮/选锁定目标 | 除HUD覆盖区域以外整个canvas | 无 | 无 | 非PLAYING/BONUS阻止 | pointerdown/hold | fire()/hitFish() | 是 | 手动115ms/自动145ms
+
+资金按钮不会串到返回/客服接口；返回、客服、音乐、音效分别绑定独立处理函数。

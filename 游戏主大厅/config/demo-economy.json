@@ -1,0 +1,20 @@
+{
+  "mode": "DEMO_ONLY",
+  "startingBalance": 100000,
+  "rebateRate": 0.005,
+  "cannonValues": [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000],
+  "fish": {
+    "clown": {"name":"小丑鱼","multiplier":2,"captureChance":0.47},
+    "butterfly": {"name":"蝶鱼","multiplier":3,"captureChance":0.31},
+    "tang": {"name":"蓝唐王鱼","multiplier":5,"captureChance":0.19},
+    "snapper": {"name":"红鲷鱼","multiplier":8,"captureChance":0.118},
+    "angel": {"name":"金神仙鱼","multiplier":12,"captureChance":0.079},
+    "lion": {"name":"狮子鱼","multiplier":20,"captureChance":0.047},
+    "turtle": {"name":"海龟","multiplier":30,"captureChance":0.031},
+    "crab": {"name":"帝王蟹","multiplier":40,"captureChance":0.0235},
+    "manta": {"name":"魔鬼鱼","multiplier":60,"captureChance":0.0155},
+    "marlin": {"name":"剑鱼","multiplier":80,"captureChance":0.0117},
+    "octopus": {"name":"巨型章鱼","multiplier":120,"captureChance":0.0078},
+    "boss": {"name":"黄金鲨王","multiplier":300,"captureChance":0.0031}
+  }
+}

@@ -1,0 +1,13 @@
+animationId | 名称 | 触发 | 默认持续 | 循环 | 可中断 | 音频
+fish_swim | 普通鱼游动 | 鱼生成 | 直到离屏 | 是 | 是 | 无
+fish_sway | 鱼体摆动 | fish_swim | 持续 | 是 | 是 | 无
+bullet_fire | 炮弹飞行 | 点击/自动发炮 | <=4.3s | 否 | 命中可中断 | 发炮.wav
+bullet_bounce | 炮弹反弹 | 碰边 | 即时 | 否 | 是 | 无
+net_hit | 鱼网展开 | 炮弹命中 | 0.24s | 否 | 否 | 命中.wav
+fish_flash | 命中闪光 | 服务端命中返回前后 | 约0.25s | 否 | 是 | 命中.wav
+fish_capture | 捕获淡出 | captured=true | 约0.4s | 否 | 否 | 捕获.wav
+reward_float | 奖励滚字 | 捕获 | 1.2s | 否 | 否 | 金币.wav
+fish_tide_sweep | 横向鱼潮 | 红利事件A | 约14s | 否 | 否 | 鱼潮.wav
+fish_tide_spiral | 环形鱼潮 | 红利事件B | 约15s | 否 | 否 | 鱼潮.wav
+boss_enter | 黄金鲨王 | 红利事件C | 最长26s | 否 | 捕获可中断 | 鲨王来袭.wav
+water_caustic | 水波光纹 | 游戏运行 | 持续 | 是 | 是 | 无

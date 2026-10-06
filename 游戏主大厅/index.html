@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#03182a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>横屏游戏主大厅</title>
+  <link rel="preload" href="./assets/深海背景.webp" as="image">
+  <link rel="stylesheet" href="./ui/styles.css">
+</head>
+<body>
+  <main id="app" aria-label="横屏游戏主大厅">
+    <canvas id="gameCanvas" aria-label="捕鱼游戏区域"></canvas>
+
+    <section id="lobby" class="lobby-overlay" aria-label="横屏游戏大厅">
+      <div class="lobby-shell">
+        <section class="lobby-topbar glass">
+          <div class="lobby-brand">
+            <span class="lobby-brand-mark">YY9</span>
+            <div>
+              <strong>横屏综合游戏大厅</strong>
+              <p>手动左右滑动查看，不做自动大厅轮播</p>
+            </div>
+          </div>
+          <div class="lobby-marquee">
+            <span class="marquee-label">跑马灯</span>
+            <div class="marquee-window">
+              <div id="marqueeTrack" class="marquee-track"></div>
+            </div>
+          </div>
+          <div class="lobby-overview">
+            <div class="overview-pill">
+              <span>大厅在线</span>
+              <strong id="lobbyTotalOnline">8,888</strong>
+            </div>
+            <div class="overview-pill">
+              <span>综合奖池</span>
+              <strong id="lobbyTotalJackpot">¥ 9,888,888</strong>
+            </div>
+          </div>
+        </section>
+
+        <div class="lobby-hero glass">
+          <div class="lobby-copy">
+            <span class="lobby-kicker">横屏全屏综合大厅</span>
+            <h1>YY9 横屏游戏大厅</h1>
+            <p>参考图与视频已整理成一个横屏入口大厅，补上动态推荐位、奖池滚动、在线人数浮动、两层卡片和手动滑动分区。</p>
+            <div class="lobby-tags">
+              <span>全屏横版</span>
+              <span>手动滑动</span>
+              <span>两层卡片</span>
+              <span>动态推荐</span>
+            </div>
+            <div class="lobby-actions">
+              <button id="btnEnterFishing" class="hero-button" type="button">进入捕鱼</button>
+              <span class="swipe-hint">按住卡片区域左右拖动 / 手机上直接手滑</span>
+            </div>
+          </div>
+          <div id="lobbyRecommendation" class="lobby-feature-card" data-game="fishing">
+            <div class="recommendation-screen">
+              <span id="recommendationBadge" class="recommendation-badge">本场热推</span>
+              <strong id="recommendationTitle">深海捕鱼</strong>
+              <p id="recommendationScene">黄金鲨王 · 高爆场景</p>
+            </div>
+            <div class="recommendation-meta">
+              <div>
+                <span>当前在线</span>
+                <strong id="recommendationOnline">6,888</strong>
+              </div>
+              <div>
+                <span>奖池滚动</span>
+                <strong id="recommendationJackpot">¥ 388,888</strong>
+              </div>
+              <div>
+                <span>状态</span>
+                <strong id="recommendationStatus">可试玩</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="lobby-section glass">
+          <div class="lobby-section-head">
+            <div>
+              <span class="section-kicker">一类卡片</span>
+              <h2>热门主分类</h2>
+            </div>
+            <p>这里不自动轮播，只保留手动左右滑动切换</p>
+          </div>
+          <div id="featuredRail" class="lobby-scroll featured-rail" aria-label="热门主分类滑动区"></div>
+        </section>
+
+        <div id="lobbySections" class="lobby-sections"></div>
+      </div>
+    </section>
+
+    <section id="topHud" class="hud top-hud">
+      <div class="player-card glass">
+        <div id="avatar" class="avatar">鱼</div>
+        <div class="player-lines">
+          <div><strong id="nickname">试玩玩家</strong><span id="vip" class="vip">VIP0</span></div>
+          <div id="playerId" class="muted">ID --</div>
+        </div>
+      </div>
+      <div id="eventBanner" class="event-banner" aria-live="polite">深海平静</div>
+      <div class="top-actions">
+        <button id="btnBack" class="round-button" type="button" aria-label="返回捕鱼厅">返回</button>
+        <button id="btnSupport" class="round-button" type="button" aria-label="客服">客服</button>
+        <button id="btnHelp" class="round-button" type="button" aria-label="游戏说明">说明</button>
+      </div>
+    </section>
+
+    <section id="statusHud" class="status-hud glass">
+      <div class="stat"><span>余额</span><strong id="balance">0.00</strong></div>
+      <button id="btnRebate" class="stat interactive" type="button"><span>返水</span><strong id="rebate">0.00</strong></button>
+      <div class="stat"><span>炮值</span><strong id="cannonValue">10</strong></div>
+      <div class="stat compact"><span>帧率</span><strong id="fps">--</strong></div>
+    </section>
+
+    <section id="controlHud" class="control-hud glass">
+      <button id="btnCannonDown" class="control-button" type="button" aria-label="降低炮值">－</button>
+      <button id="btnLock" class="control-button" type="button" aria-pressed="false">锁定</button>
+      <div class="cannon-label"><span>火力</span><strong id="cannonValueBottom">10</strong></div>
+      <button id="btnAuto" class="control-button" type="button" aria-pressed="false">自动</button>
+      <button id="btnCannonUp" class="control-button" type="button" aria-label="提高炮值">＋</button>
+    </section>
+
+    <section id="audioHud" class="audio-hud glass">
+      <button id="btnBgm" type="button" aria-pressed="true">音乐开</button>
+      <button id="btnSfx" type="button" aria-pressed="true">音效开</button>
+    </section>
+
+    <div id="loading" class="overlay loading-overlay">
+      <div class="loading-card">
+        <img src="./assets/游戏卡片.png" alt="横屏游戏主大厅" class="loading-cover">
+        <h1>横屏游戏主大厅</h1>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <p id="progressText">正在加载 0%</p>
+      </div>
+    </div>
+
+    <div id="errorOverlay" class="overlay hidden">
+      <div class="dialog error-dialog">
+        <h2>连接异常</h2>
+        <p id="errorMessage">正在尝试恢复连接</p>
+        <button id="btnRetry" type="button">重新连接</button>
+      </div>
+    </div>
+
+    <div id="helpModal" class="overlay hidden" role="dialog" aria-modal="true" aria-label="游戏说明">
+      <div class="dialog help-dialog">
+        <div class="dialog-title"><h2>深海捕鱼说明</h2><button id="btnHelpClose" type="button">关闭</button></div>
+        <p>点击或按住海面发炮。每发炮弹消耗当前炮值；命中后是否捕获、返奖金额均以服务端结果为准。开启“锁定”后点击目标即可持续瞄准；“自动”会按当前方向持续发炮。</p>
+        <div id="fishGuide" class="fish-guide"></div>
+        <p class="help-note">鱼潮会按左右穿场、环形鱼阵、黄金鲨王循环出现。试玩数据与正式数据完全隔离。</p>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <div id="modeBadge" class="mode-badge">DEMO</div>
+  </main>
+  <script type="module" src="./core/main.js"></script>
+</body>
+</html>

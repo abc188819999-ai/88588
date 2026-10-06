@@ -1,0 +1,25 @@
+《素材清单》
+assetId | filePath | type | purpose | width | height | format | fileSize | alpha | zIndex | preload/lazyLoad
+01_小丑鱼 | assets/fish/01_小丑鱼.webp | 图片 | 鱼类精灵 | 302 | 292 | WEBP | 55204 bytes | 是 | 5 | 启动阶段加载
+02_蝶鱼 | assets/fish/02_蝶鱼.webp | 图片 | 鱼类精灵 | 306 | 227 | WEBP | 71774 bytes | 是 | 5 | 启动阶段加载
+03_蓝唐王鱼 | assets/fish/03_蓝唐王鱼.webp | 图片 | 鱼类精灵 | 313 | 200 | WEBP | 64044 bytes | 是 | 5 | 启动阶段加载
+04_红鲷鱼 | assets/fish/04_红鲷鱼.webp | 图片 | 鱼类精灵 | 307 | 206 | WEBP | 68490 bytes | 是 | 5 | 启动阶段加载
+05_金神仙鱼 | assets/fish/05_金神仙鱼.webp | 图片 | 鱼类精灵 | 301 | 418 | WEBP | 90312 bytes | 是 | 5 | 启动阶段加载
+06_狮子鱼 | assets/fish/06_狮子鱼.webp | 图片 | 鱼类精灵 | 310 | 322 | WEBP | 118116 bytes | 是 | 5 | 启动阶段加载
+07_海龟 | assets/fish/07_海龟.webp | 图片 | 鱼类精灵 | 313 | 415 | WEBP | 93532 bytes | 是 | 5 | 启动阶段加载
+08_帝王蟹 | assets/fish/08_帝王蟹.webp | 图片 | 鱼类精灵 | 310 | 283 | WEBP | 119182 bytes | 是 | 5 | 启动阶段加载
+09_魔鬼鱼 | assets/fish/09_魔鬼鱼.webp | 图片 | 鱼类精灵 | 311 | 347 | WEBP | 73226 bytes | 是 | 5 | 启动阶段加载
+10_剑鱼 | assets/fish/10_剑鱼.webp | 图片 | 鱼类精灵 | 313 | 222 | WEBP | 44830 bytes | 是 | 5 | 启动阶段加载
+11_巨型章鱼 | assets/fish/11_巨型章鱼.webp | 图片 | 鱼类精灵 | 313 | 317 | WEBP | 114724 bytes | 是 | 5 | 启动阶段加载
+12_黄金鲨王 | assets/fish/12_黄金鲨王.webp | 图片 | 鱼类精灵 | 313 | 294 | WEBP | 91718 bytes | 是 | 5 | 启动阶段加载
+深海背景 | assets/深海背景.webp | 图片 | 海底背景 | 1536 | 1024 | WEBP | 412302 bytes | 否 | 0 | 预加载
+游戏卡片 | assets/游戏卡片.png | 图片 | 游戏卡片 | 384 | 384 | PNG | 79269 bytes | 否 | 0 | 预加载
+发炮 | audio/发炮.wav | 音频 | 发炮 | 0.11s | 1ch | WAV | 4894 bytes | - | audio | 启动阶段加载
+命中 | audio/命中.wav | 音频 | 命中 | 0.08s | 1ch | WAV | 3572 bytes | - | audio | 启动阶段加载
+按钮 | audio/按钮.wav | 音频 | 按钮 | 0.06s | 1ch | WAV | 2690 bytes | - | audio | 启动阶段加载
+捕获 | audio/捕获.wav | 音频 | 捕获成功 | 0.22s | 1ch | WAV | 9746 bytes | - | audio | 启动阶段加载
+深海背景音乐 | audio/深海背景音乐.wav | 音频 | BGM | 18.00s | 1ch | WAV | 793844 bytes | - | audio | 启动阶段加载
+警告 | audio/警告.wav | 音频 | 异常/余额不足 | 0.25s | 1ch | WAV | 11068 bytes | - | audio | 启动阶段加载
+金币 | audio/金币.wav | 音频 | 返奖/返水 | 0.18s | 1ch | WAV | 7982 bytes | - | audio | 启动阶段加载
+鱼潮 | audio/鱼潮.wav | 音频 | 鱼潮事件 | 0.80s | 1ch | WAV | 35324 bytes | - | audio | 启动阶段加载
+鲨王来袭 | audio/鲨王来袭.wav | 音频 | BOSS事件 | 1.20s | 1ch | WAV | 52964 bytes | - | audio | 启动阶段加载
